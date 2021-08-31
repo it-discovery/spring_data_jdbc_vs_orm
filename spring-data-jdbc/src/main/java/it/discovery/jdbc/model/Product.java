@@ -12,7 +12,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Getter
 @Setter
 
-@Table("products")
+@Table("PRODUCTS")
 public class Product extends BaseEntity {
 
 	@Id

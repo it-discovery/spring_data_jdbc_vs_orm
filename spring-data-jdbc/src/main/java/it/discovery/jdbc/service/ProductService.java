@@ -15,4 +15,8 @@ public class ProductService {
 		productRepository.save(product);
 	}
 
+	public Product findById(int id) {
+		return productRepository.findById(id).orElseThrow();
+	}
+
 }
