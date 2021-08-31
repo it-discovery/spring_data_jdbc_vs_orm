@@ -1,6 +1,7 @@
 package it.discovery.jdbc.config;
 
 import it.discovery.jdbc.model.Order;
+import it.discovery.jdbc.model.Product;
 import it.discovery.jdbc.repository.ProductRepository;
 import it.discovery.jdbc.service.ProductService;
 import org.springframework.context.ApplicationListener;
@@ -49,8 +50,16 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
     public ApplicationListener<BeforeSaveEvent<?>> beforeSave() {
         return event -> {
             Object entity = event.getEntity();
-            if(entity instanceof Order order && order.getId() != null) {
+            if (entity instanceof Order order && order.getId() == null) {
                 order.setId(UUID.randomUUID());
+            }
+            if (entity instanceof Product product && product.getOrders() != null) {
+                product.getOrders().forEach(order -> {
+                    if(order.getId() == null) {
+                        order.setId(UUID.randomUUID());
+                    }
+                });
+
             }
         };
     }
