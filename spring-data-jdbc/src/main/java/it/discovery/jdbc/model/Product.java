@@ -21,7 +21,7 @@ public class Product extends BaseEntity {
 	
 	private String name;
 
-	@MappedCollection(idColumn = "product", keyColumn = "product")
+	@MappedCollection(idColumn = "PRODUCT", keyColumn = "PRODUCT")
 	private Set<Order> orders;
 
 	private double price;
