@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Getter @Setter
-@Table("orders")
+@Table("ORDERS")
 public class Order extends BaseEntity {
 
 	@Id
@@ -16,10 +16,13 @@ public class Order extends BaseEntity {
 	
 	private int amount;
 
-	private int productId;
+	private int product;
 
-	public Order(int amount, int productId) {
+	public Order() {
+	}
+
+	public Order(int amount, int product) {
 		this.amount = amount;
-		this.productId = productId;
+		this.product = product;
 	}
 }

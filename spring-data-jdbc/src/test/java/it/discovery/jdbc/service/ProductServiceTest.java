@@ -29,9 +29,9 @@ public class ProductServiceTest {
         product.setName("Phone");
         product.setPrice(100);
 
-//        Order order = new Order(1);
-//        order.setAmount(1);
-//        product.addOrder(order);
+        Order order = new Order();
+        order.setAmount(1);
+        product.addOrder(order);
         productService.save(product);
 
         Product product2 = productService.findById(product.getId());

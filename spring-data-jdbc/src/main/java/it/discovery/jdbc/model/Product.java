@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Getter
@@ -20,6 +21,7 @@ public class Product extends BaseEntity {
 	
 	private String name;
 
+	@MappedCollection(idColumn = "product", keyColumn = "product")
 	private Set<Order> orders;
 
 	private double price;
