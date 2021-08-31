@@ -14,12 +14,15 @@ import javax.persistence.Version;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Getter
 @Setter
 
 @Table
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product extends BaseEntity {
 	
 	@Id

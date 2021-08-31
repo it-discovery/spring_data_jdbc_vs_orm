@@ -2,6 +2,7 @@ package it.discovery.jdbc.service;
 
 import it.discovery.jdbc.model.Order;
 import it.discovery.jdbc.model.Product;
+import it.discovery.jdbc.model.ProductDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import it.discovery.jdbc.config.JdbcConfig;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @JdbcTest
 @ContextConfiguration(classes=JdbcConfig.class)
@@ -22,6 +24,12 @@ public class ProductServiceTest {
 
     @Autowired
     ProductService productService;
+
+    @Test
+    void findByName_productDoesntExist_notFound() {
+        ProductDTO product = productService.findByName("Some product");
+        assertNull(product);
+    }
 
     @Test
     void save_validProduct_success() {

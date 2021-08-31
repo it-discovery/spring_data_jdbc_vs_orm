@@ -1,6 +1,7 @@
 package it.discovery.jdbc.service;
 
 import it.discovery.jdbc.model.Product;
+import it.discovery.jdbc.model.ProductDTO;
 import it.discovery.jdbc.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,14 +10,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProductService {
 
-	private final ProductRepository productRepository;
-	
-	public void save(Product product) {
-		productRepository.save(product);
-	}
+    private final ProductRepository productRepository;
 
-	public Product findById(int id) {
-		return productRepository.findById(id).orElseThrow();
-	}
+    public void save(Product product) {
+        productRepository.save(product);
+    }
+
+    public Product findById(int id) {
+        return productRepository.findById(id).orElseThrow();
+    }
+
+    public ProductDTO findByName(String name) {
+        return productRepository.findByName(name);
+    }
+
 
 }
