@@ -22,8 +22,10 @@ public class SpringJdbcProductRepository implements ProductRepository {
 	public void save(Product product) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate).usingGeneratedKeyColumns("id").withTableName("products");
-	    int id = (int) jdbcInsert.executeAndReturnKey(new BeanPropertySqlParameterSource(product));
+		SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
+				.usingGeneratedKeyColumns("id").withTableName("products");
+	    int id = (int) jdbcInsert.executeAndReturnKey
+				(new BeanPropertySqlParameterSource(product));
 	    product.setId(id);
 	}
 
